@@ -1,15 +1,18 @@
 import { ServerOptions } from './types/ServerOptions';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default {
-  secretKey: 'THISISMYSECURETOKEN',
-  host: 'http://localhost',
-  port: '21465',
+  secretKey: process.env.SECRET_KEY,
+  host: process.env.HOST || 'http://localhost',
+  port: process.env.PORT || '21465',
   deviceName: 'WppConnect',
   poweredBy: 'WPPConnect-Server',
   startAllSession: true,
-  tokenStoreType: 'file',
+  tokenStoreType: process.env.TOKEN_STORE_TYPE || 'file',
   maxListeners: 15,
-  customUserDataDir: './userDataDir/',
+  customUserDataDir: process.env.CUSTOM_USER_DATA_DIR || null,
   webhook: {
     url: null,
     autoDownload: true,
@@ -89,13 +92,13 @@ export default {
     prefix: 'tagone-',
   },
   db: {
-    mongodbDatabase: 'tokens',
-    mongodbCollection: '',
-    mongodbUser: '',
-    mongodbPassword: '',
-    mongodbHost: '',
-    mongoIsRemote: true,
-    mongoURLRemote: '',
+    mongodbDatabase: process.env.MONGODB_DATABASE || 'wppconnect',
+    mongodbCollection: process.env.MONGODB_COLLECTION || 'sessions',
+    mongodbUser: process.env.MONGODB_USER || '',
+    mongodbPassword: process.env.MONGODB_PASSWORD || '',
+    mongodbHost: process.env.MONGODB_HOST || '',
+    mongoIsRemote: process.env.MONGO_IS_REMOTE === 'true',
+    mongoURLRemote: process.env.MONGO_URL_REMOTE || '',
     mongodbPort: 27017,
     redisHost: 'localhost',
     redisPort: 6379,

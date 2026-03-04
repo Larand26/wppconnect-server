@@ -1,5 +1,6 @@
-import { ServerOptions } from './types/ServerOptions';
 import dotenv from 'dotenv';
+
+import { ServerOptions } from './types/ServerOptions';
 
 dotenv.config();
 

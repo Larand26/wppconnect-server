@@ -1,9 +1,12 @@
 import { ServerOptions } from './types/ServerOptions';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 export default {
-  secretKey: 'THISISMYSECURETOKEN',
-  host: 'http://localhost',
-  port: '21465',
+  secretKey: process.env.SECRET_KEY || 'THISISMYSECURETOKEN',
+  host: process.env.HOST || 'http://localhost',
+  port: process.env.PORT || '21465',
   deviceName: 'WppConnect',
   poweredBy: 'WPPConnect-Server',
   startAllSession: true,

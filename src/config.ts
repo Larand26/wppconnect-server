@@ -48,6 +48,10 @@ export default {
     logger: ['console', 'file'],
   },
   createOptions: {
+    autoClose: 0,
+    authTimeout: 360000,
+    qrTimeout: 180000,
+
     browserArgs: [
       '--disable-web-security',
       '--no-sandbox',
